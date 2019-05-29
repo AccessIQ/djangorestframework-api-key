@@ -15,6 +15,7 @@ def pytest_configure():
                 "django.contrib.contenttypes",
                 "rest_framework",
                 "rest_framework_api_key",
+                "tests.heroes",
             ],
             ROOT_URL_CONF="urls",
             DATABASES={
