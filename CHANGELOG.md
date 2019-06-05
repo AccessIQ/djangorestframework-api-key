@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `BaseAPIKey` abstract model.
 
+## [v1.2.1] - 2019-06-03
+
+### Fixed
+
+- Fixed a critical bug in `APIKeyModelAdmin` that prevented `rest_framework_api_key` from passing Django system checks.
+
 ## [1.2.0]
 
 Released: 2019-05-29
@@ -112,7 +118,8 @@ Released: 2018-11-17
 - Generate, view and revoke API keys from the Django admin.
 - Authenticate requests using the `Api-Token` and `Api-Secret-Key` headers. Customizable via the `DRF_API_KEY_TOKEN_HEADER` and `DRF_API_KEY_SECRET_KEY_HEADER` settings.
 
-[unreleased]: https://github.com/florimondmanca/djangorestframework-api-key/compare/v1.2.0...HEAD
+[unreleased]: https://github.com/florimondmanca/djangorestframework-api-key/compare/v1.2.1...HEAD
+[v1.2.1]: https://github.com/florimondmanca/djangorestframework-api-key/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/florimondmanca/djangorestframework-api-key/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/florimondmanca/djangorestframework-api-key/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/florimondmanca/djangorestframework-api-key/compare/v0.4.0...v1.0.0
