@@ -15,15 +15,4 @@ class Migration(migrations.Migration):
             name="hashed_key",
             field=models.CharField(editable=False, max_length=150),
         ),
-        migrations.AlterField(
-            model_name="apikey",
-            name="id",
-            field=models.CharField(
-                editable=False,
-                max_length=150,
-                primary_key=True,
-                serialize=False,
-                unique=True,
-            ),
-        ),
     ]

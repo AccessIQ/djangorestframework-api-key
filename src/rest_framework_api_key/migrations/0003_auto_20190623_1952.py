@@ -5,18 +5,10 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [("rest_framework_api_key", "0002_auto_20190529_2243")]
+    dependencies = [("rest_framework_api_key", "0003_auto_20190609_1321")]
 
-    operations = [
-        migrations.AlterField(
-            model_name="apikey",
-            name="id",
-            field=models.CharField(
-                editable=False,
-                max_length=100,
-                primary_key=True,
-                serialize=False,
-                unique=True,
-            ),
-        )
-    ]
+    # Blank operations to get custom verson of package on the same footing
+    # as the latest version. We want to ensure that when we update to the
+    # latest version, we already have the expected migrations applied and only
+    # newer migrations will be added.
+    operations = []

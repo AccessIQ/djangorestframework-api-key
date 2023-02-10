@@ -7,40 +7,11 @@ MODEL_NAME = "apikey"
 DEPENDENCIES = [(APP_NAME, "0003_auto_20190623_1952")]
 
 
-def populate_prefix_hashed_key(apps, schema_editor) -> None:  # type: ignore
-    model = apps.get_model(APP_NAME, MODEL_NAME)
-
-    for api_key in model.objects.using(schema_editor.connection.alias).all():
-        prefix, _, hashed_key = api_key.id.partition(".")
-        api_key.prefix = prefix
-        api_key.hashed_key = hashed_key
-        api_key.save()
-
-
 class Migration(migrations.Migration):
 
     dependencies = DEPENDENCIES
-
-    operations = [
-        migrations.AddField(
-            model_name=MODEL_NAME,
-            name="hashed_key",
-            field=models.CharField(max_length=100, null=True),
-        ),
-        migrations.AddField(
-            model_name=MODEL_NAME,
-            name="prefix",
-            field=models.CharField(max_length=8, unique=True, null=True),
-        ),
-        migrations.RunPython(populate_prefix_hashed_key, migrations.RunPython.noop),
-        migrations.AlterField(
-            model_name=MODEL_NAME,
-            name="hashed_key",
-            field=models.CharField(max_length=100, editable=False),
-        ),
-        migrations.AlterField(
-            model_name=MODEL_NAME,
-            name="prefix",
-            field=models.CharField(max_length=8, unique=True, editable=False),
-        ),
-    ]
+    # Blank operations to get custom verson of package on the same footing
+    # as the latest version. We want to ensure that when we update to the
+    # latest version, we already have the expected migrations applied and only
+    # newer migrations will be added.
+    operations = []
