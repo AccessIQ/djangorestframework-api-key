@@ -7,8 +7,13 @@ class Migration(migrations.Migration):
 
     dependencies = [("rest_framework_api_key", "0003_auto_20190609_1321")]
 
-    # Blank operations to get custom verson of package on the same footing
-    # as the latest version. We want to ensure that when we update to the
-    # latest version, we already have the expected migrations applied and only
-    # newer migrations will be added.
-    operations = []
+    # This migration is named the same as the original package but its contents
+    # are different. We need to ensure that when we can upgrade to the original
+    # package things still work. We only want Django to apply newer migrations.
+    operations = [
+         migrations.AlterField(
+             model_name='apikey',
+             name='prefix',
+             field=models.CharField(editable=False, max_length=8, unique=True),
+         ),
+    ]
