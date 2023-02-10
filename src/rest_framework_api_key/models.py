@@ -18,12 +18,10 @@ class BaseAPIKeyManager(models.Manager):
                 typing.Callable[[], typing.Tuple[str, str]], self.key_generator.generate
             )
             key, hashed_key = generate()
-            pk = hashed_key
             prefix, hashed_key = split(hashed_key)
         else:
-            pk = concatenate(prefix, hashed_key)
+            pass
 
-        obj.id = pk
         obj.prefix = prefix
         obj.hashed_key = hashed_key
 
@@ -73,7 +71,6 @@ class APIKeyManager(BaseAPIKeyManager):
 class AbstractAPIKey(models.Model):
     objects = APIKeyManager()
 
-    id = models.CharField(max_length=150, unique=True, primary_key=True, editable=False)
     prefix = models.CharField(max_length=8, unique=True, editable=False)
     hashed_key = models.CharField(max_length=150, editable=False)
     created = models.DateTimeField(auto_now_add=True, db_index=True)
